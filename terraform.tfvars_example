@@ -1,0 +1,8 @@
+config_bucket           = "fill_me"
+region                  = "us-east-1"
+datafeeder_stack_name   = "DATAFEEDER-STACK"
+kafka_stack_name        = "KAFKA-STACK"
+environment             = "DEV"
+vpc_id                  = "vpc-XXXXXXXX"
+subnet_id               = "subnet-XXXXXXXXX"
+portainer_username      = "admin"
