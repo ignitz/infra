@@ -1,12 +1,12 @@
 locals {
   # Arquivo docker-compose contendo a stack do Kafka com o Connector
   s3_kafka_stack_path = "s3://${var.config_bucket}/build/kafka-stack.zip"
-  s3_datafeeder_path = "s3://${var.config_bucket}/build/datafeeder.zip"
+  s3_datafeeder_path  = "s3://${var.config_bucket}/build/datafeeder.zip"
 }
 
 # Enable in final version
 # module "vpc" {
-#   source = "./network/"
+#   source = "./blueprints/network/"
 # }
 
 module "datafeeder" {
@@ -14,13 +14,13 @@ module "datafeeder" {
 
   environment = var.environment
 
-  instance_name       = var.datafeeder_stack_name
-  vpc_id              = var.vpc_id
-  subnet_id           = var.subnet_id
-  key_name            = module.key_pair.key_name
-  portainer_username  = var.portainer_username
-  password            = random_password.password.result
-  s3_datafeeder_path  = local.s3_datafeeder_path
+  instance_name      = var.datafeeder_stack_name
+  vpc_id             = var.vpc_id
+  subnet_id          = var.subnet_id
+  key_name           = module.key_pair.key_name
+  portainer_username = var.portainer_username
+  password           = random_password.password.result
+  s3_datafeeder_path = local.s3_datafeeder_path
 }
 
 module "kafka" {
@@ -63,7 +63,7 @@ output "created" {
   value = {
     buckets = module.buckets.buckets
     instances = {
-      kafka = module.kafka.instance
+      kafka      = module.kafka.instance
       datafeeder = module.datafeeder.instance
     }
   }

@@ -4,7 +4,7 @@
     {
       "Effect": "Allow",
       "Action": ["s3:*"],
-      "Resource": "arn:aws:s3:::333728661073-dev-kafka-raw"
+      "Resource": "arn:aws:s3:::333728661073-dev-kafka-raw/*"
     },
     {
       "Effect": "Allow",

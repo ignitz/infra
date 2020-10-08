@@ -71,10 +71,10 @@ aws s3 cp ${S3_DATAFEEDER_PATH} /opt/datafeeder/build/ && \
     docker-compose -f tests/docker-compose.development.yml up -d sqlserver && \
     docker-compose -f tests/docker-compose.development.yml up -d postgres && \
     echo "Waiting for warm up databases."
-    sleep 300 && \
+    sleep 30 && \
     echo "Starting services." && \
     docker-compose -f tests/docker-compose.development.yml up -d --build && \
-    sleep 30 && \
+    sleep 10 && \
     echo "Creating datafeeder task." && \
     curl --request POST \
     --url http://localhost:3333/api/v1/microservices \
