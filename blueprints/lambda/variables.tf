@@ -13,7 +13,7 @@ variable "region" {
   type        = string
 }
 
-variable "memory" {
+variable "memory_size" {
   description = "Memory RAM to lambda function. (128 MB to 3,008 MB, in 64 MB increments.)"
   type        = number
   default     = 128
