@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "template_bucket" {
   bucket = lower(local.bucket_name_concat)
-  acl    = "private"
+  acl    = var.acl
 
   tags = {
     Name        = upper(local.bucket_name_concat)
@@ -10,5 +10,5 @@ resource "aws_s3_bucket" "template_bucket" {
 }
 
 locals {
-  bucket_name_concat = "${var.account_id}-${var.environment}-${var.bucket_name}-${var.suffix}"
+  bucket_name_concat = var.suffix == "" ? "${var.account_id}-${var.environment}-${var.bucket_name}" : "${var.account_id}-${var.environment}-${var.bucket_name}-${var.suffix}"
 }
