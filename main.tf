@@ -37,6 +37,7 @@ module "lambda_emr-run-deltalake" {
   key_name           = module.key_pair.key_name
   ec2_subnet_id      = var.subnet_id
   bucket_config_name = module.buckets.buckets.configs
+  env                = var.environment
 }
 
 # Get current accoundID of the account in .account_id
@@ -72,7 +73,7 @@ output "lambdas" {
 module "build_stacks" {
   source = "./modules/build_stacks"
 
-  bucket_config_name = "${module.buckets.buckets.configs}"
+  bucket_config_name = module.buckets.buckets.configs
 }
 
 output "generated_password" {
