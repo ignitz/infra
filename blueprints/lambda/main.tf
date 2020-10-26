@@ -3,7 +3,7 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_lambda_function" "lambda_function" {
   filename      = "${var.path_module}/build/lambda_function_payload.zip"
-  function_name = var.function_name
+  function_name = "${var.env}-${var.function_name}"
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = var.handler
   memory_size   = var.memory_size
@@ -14,9 +14,10 @@ resource "aws_lambda_function" "lambda_function" {
 
   runtime = var.runtime
 
-  environment {
-    variables = {
-      ENV = var.environment
+  dynamic "environment" {
+    for_each = var.environment == null ? [] : [var.environment]
+    content {
+      variables = environment.value.variables
     }
   }
 }

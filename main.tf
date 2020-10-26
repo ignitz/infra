@@ -31,6 +31,13 @@
 #   s3_kafka_stack_path = "s3://${module.build_stacks.kafka_stack.bucket}/${module.build_stacks.kafka_stack.key}"
 # }
 
+# Lambdas
+module "lambda_emr-run-deltalake" {
+  source        = "./modules/lambdas/emr-run-deltalake"
+  key_name      = module.key_pair.key_name
+  ec2_subnet_id = var.subnet_id
+}
+
 # Get current accoundID of the account in .account_id
 data "aws_caller_identity" "current" {}
 
@@ -57,6 +64,10 @@ output "buckets" {
   value = module.buckets.buckets
 }
 
+output "lambdas" {
+  value = module.lambda_emr-run-deltalake
+}
+
 module "build_stacks" {
   source = "./modules/build_stacks"
 
@@ -67,3 +78,5 @@ output "generated_password" {
   value       = random_password.password.result
   description = "Automatic password generated, copy to a safe place and run:\naws ec2 modify-instance-attribute --instance-id <your-instance-id> --user-data \":\""
 }
+
+

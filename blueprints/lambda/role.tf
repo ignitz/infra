@@ -44,7 +44,7 @@ resource "aws_iam_policy" "basic_role" {
         "logs:PutLogEvents"
       ],
       "Resource": [
-        "arn:aws:logs:${var.region}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/${var.function_name}:*"
+        "arn:aws:logs:${var.region}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/${var.env}-${var.function_name}:*"
       ]
     }
   ]

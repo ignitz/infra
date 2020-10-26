@@ -37,7 +37,7 @@ variable "runtime" {
   type        = string
 }
 
-variable "environment" {
+variable "env" {
   description = "Enrivonment variable"
   default     = "ENV"
   type        = string
@@ -65,4 +65,11 @@ variable "custom_policy" {
   ]
 }
 EOF
+}
+
+variable "environment" {
+  type = object({
+    variables = map(string)
+  })
+  default = null
 }
