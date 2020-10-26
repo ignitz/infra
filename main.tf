@@ -33,9 +33,10 @@
 
 # Lambdas
 module "lambda_emr-run-deltalake" {
-  source        = "./modules/lambdas/emr-run-deltalake"
-  key_name      = module.key_pair.key_name
-  ec2_subnet_id = var.subnet_id
+  source             = "./modules/lambdas/emr-run-deltalake"
+  key_name           = module.key_pair.key_name
+  ec2_subnet_id      = var.subnet_id
+  bucket_config_name = module.buckets.buckets.configs
 }
 
 # Get current accoundID of the account in .account_id

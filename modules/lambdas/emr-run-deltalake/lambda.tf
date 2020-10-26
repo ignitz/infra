@@ -40,6 +40,7 @@ EOF
 
   environment = {
     variables = {
+      ENV                  = var.env
       KEY_NAME             = var.key_name
       MASTER_INSTANCE_TYPE = "m5.xlarge"
       CORE_INSTANCE_TYPE   = "m5.xlarge"

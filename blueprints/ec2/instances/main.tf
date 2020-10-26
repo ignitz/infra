@@ -16,8 +16,8 @@ resource "aws_instance" "instance" {
 
   # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#block-devices
   root_block_device {
-    volume_size           = var.volume_size
-    volume_type           = var.volume_type
+    volume_size = var.volume_size
+    volume_type = var.volume_type
   }
 }
 
@@ -38,19 +38,18 @@ data "aws_ami" "latest-ubuntu" {
 
 
 variable "instance_name" {
-    type = string
-    description = "Name of the EC2 Instance on console"
+  type        = string
+  description = "Name of the EC2 Instance on console"
 }
 
 variable "environment" {
-    type = string
-    default = "dev"
+  type = string
 }
 
 variable "instance_type" {
-    type = string
-    default = "t2.micro"
-    description = "Type of the EC2 instance"
+  type        = string
+  default     = "t2.micro"
+  description = "Type of the EC2 instance"
 }
 
 variable "key_name" { type = string }
@@ -59,13 +58,13 @@ variable "subnet_id" { type = string }
 variable "user_data" { type = string }
 variable "iam_instance_profile" { type = string }
 variable "volume_size" {
-  type = string
-  default = "50"
+  type        = string
+  default     = "50"
   description = "Quantos Gigabytes o disco principal da instância terá."
 }
 variable "volume_type" {
-  type = string
-  default = "gp2"
+  type        = string
+  default     = "gp2"
   description = "O tipo de armazenamento escolhido. Can be standard, gp2, io1 or io2"
 }
 

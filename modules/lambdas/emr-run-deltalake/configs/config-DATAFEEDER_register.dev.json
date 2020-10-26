@@ -1,0 +1,20 @@
+{
+    "tables": [
+        {
+            "primaryKey": "id",
+            "databaseName": "DATAFEEDER_tracker",
+            "tableName": "public_posts",
+            "sourcePath": "s3://333728661073-dev-kafka-raw/cdc/processing/DATAFEEDER_tracker.public.posts/",
+            "sourceFormat": "parquet",
+            "targetPath": "s3://333728661073-dev-kafka-staged/DATAFEEDER_tracker/public/posts"
+        },
+        {
+            "primaryKey": "id",
+            "databaseName": "DATAFEEDER_tracker",
+            "tableName": "public_users",
+            "sourcePath": "s3://333728661073-dev-kafka-raw/cdc/processing/DATAFEEDER_tracker.public.users/",
+            "sourceFormat": "parquet",
+            "targetPath": "s3://333728661073-dev-kafka-staged/DATAFEEDER_tracker/public/users"
+        }
+    ]
+}

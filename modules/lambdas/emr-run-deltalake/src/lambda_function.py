@@ -93,10 +93,7 @@ def lambda_handler(event, context):
     # Get region name
     runtime_region = os.environ['AWS_REGION']
 
-    environment = "DEV"
-    logUri = f"s3n://aws-logs-{accountID}-{runtime_region}/elasticmapreduce/"
-    releaseLabel = "emr-6.1.0"
-
+    environment = os.environ['ENV']
     keyName = os.environ['KEY_NAME']
     masterInstanceType = os.environ['MASTER_INSTANCE_TYPE']
     coreInstanceType = os.environ['CORE_INSTANCE_TYPE']
@@ -105,6 +102,9 @@ def lambda_handler(event, context):
     instanceCount = int(os.environ['INSTANCE_COUNT'])
     ebsSizeGB = int(os.environ['EBS_SIZE_GB'])
     ec2SubnetId = os.environ['EC2_SUBNET_ID']
+
+    logUri = f"s3n://aws-logs-{accountID}-{runtime_region}/elasticmapreduce/"
+    releaseLabel = "emr-6.1.0"
 
     clusterName = f"{environment}-EMR-DELTALAKE-PROCESSING"
 

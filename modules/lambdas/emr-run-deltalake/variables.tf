@@ -10,3 +10,5 @@ variable "env" {
   description = "Environment"
   default     = "DEV"
 }
+
+variable "bucket_config_name" {}
