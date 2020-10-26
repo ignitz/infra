@@ -25,3 +25,10 @@ resource "aws_s3_bucket_object" "deltalake-jar" {
   source = "${path.module}/build/${lower(var.env)}/deltalake-processing-assembly-1.0.jar"
   etag   = filemd5("${path.module}/build/${lower(var.env)}/deltalake-processing-assembly-1.0.jar")
 }
+
+resource "aws_s3_bucket_object" "pyspark-script-curated" {
+  bucket = var.bucket_config_name
+  key    = "deltalake/pyspark/staged_to_curated.py"
+  source = "${path.module}/pyspark_scripts/${lower(var.env)}/staged_to_curated.py"
+  etag   = filemd5("${path.module}/pyspark_scripts/${lower(var.env)}/staged_to_curated.py")
+}
