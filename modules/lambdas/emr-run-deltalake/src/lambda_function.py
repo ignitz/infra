@@ -140,12 +140,6 @@ def lambda_handler(event, context):
                     'InstanceRole': 'CORE',
                     'InstanceType': coreInstanceType,
                     'InstanceCount': instanceCount,
-                    'Configurations': [
-                        {
-                            'Classification': 'spark',
-                            'Properties': {'maximizeResourceAllocation': 'true'}
-                        }
-                    ],
                     'EbsConfiguration': {
                         'EbsBlockDeviceConfigs': [
                             {
@@ -181,6 +175,12 @@ def lambda_handler(event, context):
                 "Classification": "spark-hive-site",
                 "Properties": {
                     "hive.metastore.client.factory.class": "com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory"
+                }
+            },
+            {
+                'Classification': 'spark-defaults',
+                'Properties': {
+                    "spark.sql.adaptative.enabled": "true"
                 }
             }
         ],
