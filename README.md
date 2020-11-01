@@ -1,6 +1,6 @@
 # POC II
 
-Need `bash` and `ssh-keygen`.
+Need `bash` and `ssh-keygen` and, obviously, `Terraform`.
 
 Create components
 
